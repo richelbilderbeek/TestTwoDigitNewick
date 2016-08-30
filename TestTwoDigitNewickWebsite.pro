@@ -61,7 +61,7 @@ HEADERS += \
     ../../Classes/CppFuzzy_equal_to/fuzzy_equal_to.h
 
 RESOURCES += \
-    ToolTestTwoDigitNewick.qrc
+    TestTwoDigitNewick.qrc
 OTHER_FILES += \
     wt.css
 
