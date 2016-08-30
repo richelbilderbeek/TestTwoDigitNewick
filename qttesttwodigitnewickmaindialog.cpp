@@ -51,16 +51,19 @@ ribi::QtTestTwoDigitNewickMainDialog::QtTestTwoDigitNewickMainDialog(QWidget *pa
   : QtHideAndShowDialog(parent),
     ui(new Ui::QtTestTwoDigitNewickMainDialog)
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   ui->setupUi(this);
-  QObject::connect(ui->edit_newick,static_cast<void (QLineEdit::*)(const QString&)>(&QLineEdit::textChanged),
-    this,&ribi::QtTestTwoDigitNewickMainDialog::OnAnyChange);
-  QObject::connect(ui->edit_theta,static_cast<void (QLineEdit::*)(const QString&)>(&QLineEdit::textChanged),
-    this,&ribi::QtTestTwoDigitNewickMainDialog::OnAnyChange);
-  QObject::connect(ui->button_about,&QPushButton::clicked,
-    this,&ribi::QtTestTwoDigitNewickMainDialog::OnAboutClick);
+  QObject::connect(
+    ui->edit_newick, SIGNAL(textChanged(QString)),
+    this, SLOT(OnAnyChange())
+  );
+  QObject::connect(
+    ui->edit_theta, SIGNAL(textChanged(QString)),
+    this, SLOT(OnAnyChange())
+  );
+  QObject::connect(
+    ui->button_about, SIGNAL(clicked()),
+    this, SLOT(OnAnyChange())
+  );
 
   //Put the dialog in the screen center
   const QRect screen = QApplication::desktop()->screenGeometry();
@@ -262,15 +265,3 @@ void ribi::QtTestTwoDigitNewickMainDialog::OnAboutClick()
   QtAboutDialog d(about);
   this->ShowChild(&d);
 }
-
-#ifndef NDEBUG
-void ribi::QtTestTwoDigitNewickMainDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-}
-#endif

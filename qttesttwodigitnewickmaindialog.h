@@ -51,10 +51,6 @@ private:
 private slots:
   void OnAnyChange();
   void OnAboutClick();
-
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
 };
 
 } //~namespace ribi
