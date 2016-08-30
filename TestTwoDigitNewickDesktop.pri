@@ -1,13 +1,13 @@
-include(../../Tools/ToolTestTwoDigitNewick/ToolTestTwoDigitNewickConsole.pri)
+include(TestTwoDigitNewickConsole.pri)
 
 SOURCES += \
-    ../../Tools/ToolTestTwoDigitNewick/qttesttwodigitnewickmaindialog.cpp \
-    ../../Tools/ToolTestTwoDigitNewick/qttesttwodigitnewickmenudialog.cpp
+    $$PWD/qttesttwodigitnewickmaindialog.cpp \
+    $$PWD/qttesttwodigitnewickmenudialog.cpp
 
 FORMS += \
-    ../../Tools/ToolTestTwoDigitNewick/qttesttwodigitnewickmaindialog.ui \
-    ../../Tools/ToolTestTwoDigitNewick/qttesttwodigitnewickmenudialog.ui
+    $$PWD/qttesttwodigitnewickmaindialog.ui \
+    $$PWD/qttesttwodigitnewickmenudialog.ui
 
 HEADERS += \
-    ../../Tools/ToolTestTwoDigitNewick/qttesttwodigitnewickmaindialog.h \
-    ../../Tools/ToolTestTwoDigitNewick/qttesttwodigitnewickmenudialog.h
+    $$PWD/qttesttwodigitnewickmaindialog.h \
+    $$PWD/qttesttwodigitnewickmenudialog.h
