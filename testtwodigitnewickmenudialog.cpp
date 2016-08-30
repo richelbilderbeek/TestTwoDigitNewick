@@ -8,7 +8,6 @@
 #pragma GCC diagnostic ignored "-Wunused-local-typedefs"
 #include <boost/lexical_cast.hpp>
 
-#include "richelbilderbeekprogram.h"
 #include "twodigitnewick.h"
 #include "testtimer.h"
 #include "newick.h"
@@ -16,9 +15,6 @@
 
 int ribi::TestTwoDigitNewickMenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   const int argc = static_cast<int>(argv.size());
   if (argc == 1)
   {
@@ -92,14 +88,7 @@ ribi::Help ribi::TestTwoDigitNewickMenuDialog::GetHelp() const noexcept
   );
 }
 
-boost::shared_ptr<const ribi::Program> ribi::TestTwoDigitNewickMenuDialog::GetProgram() const noexcept
-{
-  const boost::shared_ptr<const ribi::Program> p {
-    new ProgramTestTwoDigitNewick
-  };
-  assert(p);
-  return p;
-}
+
 std::string ribi::TestTwoDigitNewickMenuDialog::GetVersion() const noexcept
 {
   return "2.2";
@@ -128,15 +117,3 @@ std::vector<std::string> ribi::TestTwoDigitNewickMenuDialog::GetVersionHistory()
     "2011-03-08: version 2.2: minor changes in Newick namespace",
   };
 }
-
-#ifndef NDEBUG
-void ribi::TestTwoDigitNewickMenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-}
-#endif
