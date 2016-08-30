@@ -1,14 +1,14 @@
-include(../../DesktopApplication.pri)
-include(../../Libraries/Boost.pri)
-include(../../Libraries/BigInteger.pri)
-include(../../Libraries/GeneralConsole.pri)
-include(../../Libraries/GeneralDesktop.pri)
+include(../RibiLibraries/DesktopApplication.pri)
+include(../RibiLibraries/Boost.pri)
+include(../RibiLibraries/BigInteger.pri)
+include(../RibiLibraries/GeneralConsole.pri)
+include(../RibiLibraries/GeneralDesktop.pri)
 
 #Specific
-include(../../Classes/CppBinaryNewickVector/CppBinaryNewickVector.pri)
-include(../../Classes/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
-include(../../Classes/CppNewick/CppNewick.pri)
-include(../../Classes/CppTwoDigitNewick/CppTwoDigitNewick.pri)
-include(ToolTestTwoDigitNewickDesktop.pri)
+include(../RibiClasses/CppBinaryNewickVector/CppBinaryNewickVector.pri)
+include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
+include(../RibiClasses/CppNewick/CppNewick.pri)
+include(../RibiClasses/CppTwoDigitNewick/CppTwoDigitNewick.pri)
+include(TestTwoDigitNewickDesktop.pri)
 
 SOURCES += qtmain.cpp
