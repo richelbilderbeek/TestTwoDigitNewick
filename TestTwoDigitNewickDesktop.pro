@@ -12,3 +12,10 @@ include(../RibiClasses/CppTwoDigitNewick/CppTwoDigitNewick.pri)
 include(TestTwoDigitNewickDesktop.pri)
 
 SOURCES += qtmain.cpp
+
+# Thanks to Qt
+QMAKE_CXXFLAGS += -Wno-unused-variable
+
+# gcov
+QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
+LIBS += -lgcov

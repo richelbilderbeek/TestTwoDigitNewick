@@ -62,8 +62,17 @@ HEADERS += \
 
 RESOURCES += \
     TestTwoDigitNewick.qrc
+
 OTHER_FILES += \
     wt.css
 
+# Thanks to Qt
+QMAKE_CXXFLAGS += -Wno-unused-variable
+
+# gcov
+QMAKE_CXXFLAGS += -fprofile-arcs -ftest-coverage
+LIBS += -lgcov
+
 # References
 # [1] http://www.richelbilderbeek.nl/CppCompileErrorCc1plusInternalCompilerErrorSegmentationFault.htm
+
