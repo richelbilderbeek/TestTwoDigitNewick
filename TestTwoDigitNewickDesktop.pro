@@ -8,7 +8,7 @@ include(../RibiLibraries/GeneralDesktop.pri)
 include(../BinaryNewickVector/BinaryNewickVector.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
 include(../Newick/Newick.pri)
-include(../RibiClasses/CppTwoDigitNewick/CppTwoDigitNewick.pri)
+include(TwoDigitNewick.pri)
 include(TestTwoDigitNewickDesktop.pri)
 
 SOURCES += qtmain.cpp
