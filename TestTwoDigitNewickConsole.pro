@@ -1,7 +1,7 @@
 include(../RibiLibraries/ConsoleApplication.pri)
 
 include(../RibiClasses/CppAbout/CppAbout.pri)
-include(../RibiClasses/CppBinaryNewickVector/CppBinaryNewickVector.pri)
+include(../TestBinaryNewickVector/CppBinaryNewickVector.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
 include(../RibiClasses/CppNewick/CppNewick.pri)
 include(../RibiClasses/CppTestTimer/CppTestTimer.pri)

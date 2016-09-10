@@ -5,7 +5,7 @@ include(../RibiLibraries/GeneralConsole.pri)
 include(../RibiLibraries/GeneralDesktop.pri)
 
 #Specific
-include(../RibiClasses/CppBinaryNewickVector/CppBinaryNewickVector.pri)
+include(../TestBinaryNewickVector/CppBinaryNewickVector.pri)
 include(../RibiClasses/CppFuzzy_equal_to/CppFuzzy_equal_to.pri)
 include(../RibiClasses/CppNewick/CppNewick.pri)
 include(../RibiClasses/CppTwoDigitNewick/CppTwoDigitNewick.pri)
