@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cpp_files=`ls *.cpp | egrep -v "^qrc_.*\.cpp$" | egrep -v "^moc_.*\.cpp$" | egrep -v "^.*_test\.cpp$"`
-h_files=`ls *.h | egrep -v "^ui_.*\.h$"`
+cpp_files=`ls *.cpp | egrep -v "^qrc_.*\.cpp$" | egrep -v "^moc_.*\.cpp$" | egrep -v "^wt.*\.cpp$" | egrep -v "^.*_test\.cpp$"`
+h_files=`ls *.h | egrep -v "^ui_.*\.h$" | egrep -v "^wt.*\.h$"`
 
 ./oclint-0.10.3/bin/oclint -o oclint.log \
   -disable-rule ShortVariableName \
@@ -9,8 +9,12 @@ h_files=`ls *.h | egrep -v "^ui_.*\.h$"`
   $h_files \
   -- \
   -c -std=c++11 -fPIC \
-  -I../RibiClasses/CppAbout \
+  -I../BinaryNewickVector \
   -I../ConceptMap \
+  -I../Newick \
+  -I../NewickVector \
+  -I../QtConceptMap \
+  -I../RibiClasses/CppAbout \
   -I../RibiClasses/CppContainer \
   -I../RibiClasses/CppCounter \
   -I../RibiClasses/CppFuzzy_equal_to \
@@ -22,7 +26,6 @@ h_files=`ls *.h | egrep -v "^ui_.*\.h$"`
   -I../RibiClasses/CppPlane \
   -I../RibiClasses/CppQtAboutDialog \
   -I../RibiClasses/CppQtArrowItem \
-  -I../QtConceptMap \
   -I../RibiClasses/CppQtHideAndShowDialog \
   -I../RibiClasses/CppQtKeyboardFriendlyGraphicsView \
   -I../RibiClasses/CppQtQuadBezierArrowItem \
