@@ -1,3 +1,3 @@
 #!/bin/bash
-qmake NewickTest.pro
+qmake TwoDigitNewickTest.pro
 make

@@ -32,7 +32,7 @@ script:
   - ./TwoDigitNewickTest
   - ./build_console.sh
   - ./build_desktop.sh
-  - ./TestTwoDigitNewickConsole --about
+  - ./TestTwoDigitNewickConsole "(2,(2,2))" 10.0
   - ./get_code_cov.sh
   - codecov
   - ./do_oclint.sh
