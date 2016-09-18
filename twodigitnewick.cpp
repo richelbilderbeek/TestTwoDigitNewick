@@ -170,24 +170,3 @@ void ribi::TwoDigitNewick::SetTheta(const double theta)
   assert(theta >= 0.0);
   sm_theta = theta;
 }
-
-#ifndef NDEBUG
-void ribi::TwoDigitNewick::Test() noexcept
-{
-  ribi::TwoDigitNewick::SetTheta(10.0);
-  const std::vector<std::string> v = Newick().CreateValidNewicks();
-  for(const std::string& s: v)
-  {
-    if ( Newick().CalcComplexity(Newick().StringToNewick(s))
-      >  BigInteger(1000000) )
-    {
-      continue;
-    }
-    if (Newick().IsBinaryNewick(Newick().StringToNewick(s)))
-    {
-      BinaryNewickVector n(s);
-      TwoDigitNewickIndexer(n,10.0);
-    }
-  }
-}
-#endif // NDEBUG

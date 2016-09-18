@@ -98,12 +98,6 @@ struct TwoDigitNewick
   static double CalculateProbability(
     const std::string& newick,
     const double theta);
-
-  private:
-  #ifndef NDEBUG
-  static void Test() noexcept;
-  #endif
-
 };
 
 } //~namespace ribi

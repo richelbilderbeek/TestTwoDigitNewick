@@ -28,6 +28,8 @@ before_script:
   - ./install_other_githubs.sh
 
 script: 
+  - ./build_test.sh
+  - ./TwoDigitNewickTest
   - ./build_console.sh
   - ./build_desktop.sh
   - ./TestTwoDigitNewickConsole --about
