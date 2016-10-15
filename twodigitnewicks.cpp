@@ -60,7 +60,7 @@ ribi::TwoDigitNewicks::TwoDigitNewicks(const int n_reserved, const double theta)
     assert(i!=0 && "'(0)' is no valid Newick");
 
     n.SetProbability(Newick().CalcProbabilitySimpleNewick(
-      Newick().CreateVector(
+      newick::CreateVector(
         static_cast<int>(Newick::bracket_open),
         i,
         static_cast<int>(Newick::bracket_close)),
@@ -88,41 +88,18 @@ const ribi::TwoDigitNewick& ribi::TwoDigitNewicks::GetNewick(
   assert(i>=0);
   assert(i < this->Size());
   //Check if returned indices are okay
-  #ifndef NDEBUG
-  const TwoDigitNewick& v = m_v[i];
-  for(const TwoDigitNewickDerivative& j: v.GetDerivatives())
-  {
-    assert(j.m_derived_index >= 0);
-    assert(j.m_derived_index < this->Size() );
-  }
-  #endif
   return m_v[i];
 }
 
 void ribi::TwoDigitNewicks::SetNewick(const int i, const TwoDigitNewick& v)
 {
-  //std::clog << __LINE__ << " - " << i << '\n';
-  //Allocate storage
   //TODO: replace by push_back
   if (i >= boost::numeric_cast<int>(m_v.size()))
   {
     m_v.resize(i + 1);
     assert(m_v[m_v.size()-1].Empty());
   }
-  //
-  //std::clog << "Adding a Newick at index " << i << '\n';
   assert(m_v[i].Empty());
-
-  #ifndef NDEBUG
-  for(const TwoDigitNewickDerivative& j: v.GetDerivatives())
-  {
-    assert(j.m_derived_index > 0);
-    assert(j.m_derived_index < boost::numeric_cast<int>(m_v.size())
-      && "Cannot set a derivative index "
-         "bigger than the number of derivatives");
-  }
-  #endif
-
   m_v[i] = v;
 }
 
