@@ -35,7 +35,7 @@ using namespace ribi;
 BOOST_AUTO_TEST_CASE(ribi_TwoDigitNewick_all)
 {
   ribi::TwoDigitNewick::SetTheta(10.0);
-  const std::vector<std::string> v = Newick().CreateValidNewicks();
+  const std::vector<std::string> v = ribi::newick::CreateValidNewicks();
   for(const std::string& s: v)
   {
     if ( Newick().CalcComplexity(Newick().StringToNewick(s))
