@@ -66,20 +66,11 @@ double ribi::TwoDigitNewick::CalculateDenominator(
 {
   assert(sm_theta >= 0.0);
   assert(sum_above_zero >= 0);
-  #ifndef NDEBUG
-  if (sum_above_one < 0)
-  {
-    std::cerr << "Invalid sum_above_one: " << sum_above_one << '\n';
-  }
-  #endif
   assert(sum_above_one >= 0);
-  const double d
-    = boost::numeric_cast<double>(
-      sum_above_zero * (sum_above_zero - 1))
-    + (boost::numeric_cast<double>(sum_above_one)
-       * sm_theta);
-
-  return d;
+  return boost::numeric_cast<double>(
+      sum_above_zero * (sum_above_zero - 1)
+    ) + (boost::numeric_cast<double>(sum_above_one) * sm_theta)
+  ;
 }
 
 double ribi::CalculateProbabilityTwoDigitNewick(
@@ -145,9 +136,10 @@ std::vector<std::string> ribi::GetTwoDigitNewickVersionHistory() noexcept
 
 bool ribi::TwoDigitNewick::IsComplete() const
 {
-  return (!m_derivatives.empty()
+  return !m_derivatives.empty()
     && m_sum_terms_above_zero >= 0
-    && m_sum_terms_above_one  >= 0);
+    && m_sum_terms_above_one  >= 0
+  ;
 }
 
 bool ribi::TwoDigitNewick::IsProbabilityKnown() const

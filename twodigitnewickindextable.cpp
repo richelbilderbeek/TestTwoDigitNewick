@@ -54,7 +54,7 @@ const std::pair<int,int> ribi::TwoDigitNewickIndexTable::Find(const int i) const
     }
   }
   std::cerr << "Index " << i << " not found in ribi::TwoDigitNewickIndexTable::Find\n";
-  assert(!"Should not get here");
+  assert(!"Should not get here"); //!OCLINT valid idiom
   std::stringstream s;
   s << "Index " << i << " not found in ribi::TwoDigitNewickIndexTable::Find";
   throw std::logic_error(s.str());

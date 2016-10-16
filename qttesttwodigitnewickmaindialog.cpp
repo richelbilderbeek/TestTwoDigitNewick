@@ -76,11 +76,6 @@ ribi::QtTestTwoDigitNewickMainDialog::QtTestTwoDigitNewickMainDialog(QWidget *pa
 
   //Run some test cases
   #ifndef NDEBUG
-  Newick();
-  TwoDigitNewick();
-  #endif
-
-  #ifndef NDEBUG
   this->setWindowTitle(this->windowTitle() + QString(" (Debug)"));
   #else
   this->setWindowTitle(this->windowTitle() + QString(" (Release)"));

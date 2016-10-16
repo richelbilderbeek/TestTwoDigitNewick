@@ -14,7 +14,7 @@ namespace ribi {
 
 class QtTestTwoDigitNewickMenuDialog : public QtHideAndShowDialog
 {
-  Q_OBJECT
+  Q_OBJECT //!OCLINT
 
 public:
   explicit QtTestTwoDigitNewickMenuDialog(QWidget *parent = 0);

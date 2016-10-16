@@ -13,7 +13,9 @@
 #include "newick.h"
 #pragma GCC diagnostic pop
 
-int ribi::TestTwoDigitNewickMenuDialog::ExecuteSpecific(const std::vector<std::string>& argv) noexcept
+int ribi::TestTwoDigitNewickMenuDialog::ExecuteSpecific(
+  const std::vector<std::string>& argv
+) noexcept
 {
   const int argc = static_cast<int>(argv.size());
   if (argc == 1)
@@ -94,7 +96,8 @@ std::string ribi::TestTwoDigitNewickMenuDialog::GetVersion() const noexcept
   return "2.2";
 }
 
-std::vector<std::string> ribi::TestTwoDigitNewickMenuDialog::GetVersionHistory() const noexcept
+std::vector<std::string>
+ribi::TestTwoDigitNewickMenuDialog::GetVersionHistory() const noexcept
 {
   return {
     "2010-08-22: version 0.1: initial version, only simple Newicks",
@@ -103,13 +106,21 @@ std::vector<std::string> ribi::TestTwoDigitNewickMenuDialog::GetVersionHistory()
     "2010-08-24: version 0.4: improved architecture",
     "2010-08-25: version 0.5: cleaned up code",
     "2010-08-25: version 0.6: added Ewens probability for simple Newicks",
-    "2010-09-03: version 0.7: all TwoDigitNewicks contain correct values of m_sum_above_zero and m_sum_above_one. NewickIndex contains a new method called ConstructNewick to reconstruct BinaryNewickVector from a TwoDigitNewick.",
-    "2010-09-03: version 0.8: framework to get all TwoDigitNewicks' probabilities calculated is setup",
-    "2010-09-03: version 0.8.1: bug-fix: probabilities of simple Newicks can be calculated from GUI",
-    "2010-09-03: version 0.8.2: bug-fix: probabilities of Newicks with multiple complex branches can be calculated",
+    "2010-09-03: version 0.7: all TwoDigitNewicks contain correct values "
+      "of m_sum_above_zero and m_sum_above_one. NewickIndex contains a new "
+      "method called ConstructNewick to reconstruct "
+      "BinaryNewickVector from a TwoDigitNewick.",
+    "2010-09-03: version 0.8: framework to get all TwoDigitNewicks' "
+      "probabilities calculated is setup",
+    "2010-09-03: version 0.8.1: bug-fix: probabilities of simple Newicks "
+      "can be calculated from GUI",
+    "2010-09-03: version 0.8.2: bug-fix: probabilities of Newicks with multiple "
+      "complex branches can be calculated",
     "2010-09-04: version 0.9: TwoDigitNewick architecture is correctly built up",
-    "2010-09-04: version 0.10: Project can be built differently in debug and release mode. Application can also be called with command-line parameters",
-    "2010-09-04: version 0.11: bug-fix: the Newick '(1,(1,1))' now has its probability correctly calculated",
+    "2010-09-04: version 0.10: Project can be built differently in debug and "
+      "release mode. Application can also be called with command-line parameters",
+    "2010-09-04: version 0.11: bug-fix: the Newick '(1,(1,1))' "
+      "now has its probability correctly calculated",
     "2010-09-05: version 1.0: initial release",
     "2010-10-02: version 1.1: application ports to Windows",
     "2011-02-20: version 2.0: major architectural change, removed use of CLN library",

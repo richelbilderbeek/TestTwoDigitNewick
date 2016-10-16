@@ -58,17 +58,6 @@ ribi::TwoDigitNewickIndexer::TwoDigitNewickIndexer(
     return;
   }
 
-  //Assume all reserved Newicks from index 2 are complete
-  #ifndef NDEBUG
-  {
-    const int sz = m_newicks.Size();
-    for (int i=2; i!=sz; ++i)
-    {
-      assert(GetNewick(i).IsComplete());
-    }
-  }
-  #endif
-
   //Create all Newicks and derivatives, but do not calculate their
   //probabilities yet
   std::vector<int> v = n.Peek();
@@ -273,7 +262,7 @@ const ribi::TwoDigitNewick
       //saz = sum above zero
       const int saz = x + y - 1;
       //sao = sum above one
-      const int sao = (y - 1 == 1 ? 0 : y - 1);
+      const int sao{y - 1 == 1 ? 0 : y - 1};
       assert(saz >  0);
       assert(sao >= 0);
       const int d_i = SummarizeNewick(x,y-1,saz,sao);
@@ -292,51 +281,50 @@ const ribi::TwoDigitNewick
     TwoDigitNewick n( v,x+y,y);
     return n;
   }
-  else
+  //(x,y) -> { (x-1,y), (x,y-1) }
+  //'y','y-1','x' and 'x-1' are reserved indices
+  assert(x > 1 && x < m_reserved);
+  assert(y > 1 && y < m_reserved);
+
+  std::vector<TwoDigitNewickDerivative> v;
+
+  //saz = sum above zero
+  const int saz = x + y - 1;
+  //sao = sum above one
+  const int sao_left{ x - 1 == 1 ? x + y - 2 : x + y - 1};
+  const int sao_right{y - 1 == 1 ? x + y - 2 : x + y - 1};
+
+  assert(saz       >  0);
+  assert(sao_left  >= 0);
+  assert(sao_right >= 0);
+  //Derive (x-1,y)
   {
-    //(x,y) -> { (x-1,y), (x,y-1) }
-    //'y','y-1','x' and 'x-1' are reserved indices
-    assert(x > 1 && x < m_reserved);
-    assert(y > 1 && y < m_reserved);
-
-    std::vector<TwoDigitNewickDerivative> v;
-
-    //saz = sum above zero
-    const int saz = x + y - 1;
-    //sao = sum above one
-    const int sao_left  = (x - 1 == 1 ? x + y - 2 : x + y - 1);
-    const int sao_right = (y - 1 == 1 ? x + y - 2 : x + y - 1);
-
-    assert(saz       >  0);
-    assert(sao_left  >= 0);
-    assert(sao_right >= 0);
-    //Derive (x-1,y)
-    {
-      const int d_i_left  = SummarizeNewick(x-1,y,saz,sao_left );
-      const int value_changed_left = x;
-      const int other_value_changed_left = 0; //<Only x changed
-      v.push_back(
-        TwoDigitNewickDerivative(
-          d_i_left,value_changed_left,other_value_changed_left));
-    }
-    //Derive (x,y-1)
-    {
-      const int d_i_right = SummarizeNewick(x,y-1,saz,sao_right);
-      const int value_changed_right = y;
-      const int other_value_changed_right = 0; //<Only y changed
-      v.push_back(
-        TwoDigitNewickDerivative(
-          d_i_right,value_changed_right,other_value_changed_right));
-      TwoDigitNewick n(v,x+y,x+y);
-      return n;
-    }
+    const int d_i_left  = SummarizeNewick(x-1,y,saz,sao_left );
+    const int value_changed_left = x;
+    const int other_value_changed_left = 0; //<Only x changed
+    v.push_back(
+      TwoDigitNewickDerivative(
+        d_i_left,value_changed_left,other_value_changed_left));
+  }
+  //Derive (x,y-1)
+  {
+    const int d_i_right = SummarizeNewick(x,y-1,saz,sao_right);
+    const int value_changed_right = y;
+    const int other_value_changed_right = 0; //<Only y changed
+    v.push_back(
+      TwoDigitNewickDerivative(
+        d_i_right,value_changed_right,other_value_changed_right));
+    TwoDigitNewick n(v,x+y,x+y);
+    return n;
   }
 }
 
-const ribi::TwoDigitNewick ribi::TwoDigitNewickIndexer::CreateTwoDigitNewickDerivativesSimpleComplex(
+const ribi::TwoDigitNewick
+ribi::TwoDigitNewickIndexer::CreateTwoDigitNewickDerivativesSimpleComplex(
   const int x, const int y,
   const int sum_above_zero,
-  const int sum_above_one)
+  const int sum_above_one
+)
 {
   assert(IsSimple(x) && !IsSimple(y));
 
@@ -350,7 +338,7 @@ const ribi::TwoDigitNewick ribi::TwoDigitNewickIndexer::CreateTwoDigitNewickDeri
     const int saz = sum_above_zero - 1;
     assert(saz >= 0);
     //sao = sum above one
-    const int sao = (x - 1 == 1 ? sum_above_one - 2 : sum_above_one - 1);
+    const int sao{x - 1 == 1 ? sum_above_one - 2 : sum_above_one - 1};
 
     assert(saz >  0);
     assert(sao >= 0);
@@ -473,7 +461,7 @@ const ribi::TwoDigitNewick
 int ribi::TwoDigitNewickIndexer::GetDeltaSumAboveZero(const int old_value) const
 {
   assert(old_value > 0);
-  return (old_value == 1 ? 0 : -1);
+  return old_value == 1 ? 0 : -1;
 }
 
 ///GetDeltaSumAboveOne calculates the delta in the
@@ -487,7 +475,7 @@ int ribi::TwoDigitNewickIndexer::GetDeltaSumAboveOne(const TwoDigitNewickDerivat
   if (x  > 2) return -1;
   if (x == 2) return -2;
   assert(x == 1);
-  return (d.m_other_value_changed == 1 ? 2 : 1);
+  return d.m_other_value_changed == 1 ? 2 : 1;
 }
 
 ///GetProbability returns the probability of the BinaryNewickVector
@@ -603,7 +591,8 @@ void ribi::TwoDigitNewickIndexer::TryToCalculateNewNewick(const int i)
     const double c
       = (derivative.m_value_changed == 1
       ? m_theta
-      : boost::numeric_cast<double>(derivative.m_value_changed) * boost::numeric_cast<double>(derivative.m_value_changed - 1))
+      : boost::numeric_cast<double>(derivative.m_value_changed)
+      * boost::numeric_cast<double>(derivative.m_value_changed - 1))
       / denominator;
     const double p_this
       = c * GetNewick(derivative.m_derived_index).GetProbability();

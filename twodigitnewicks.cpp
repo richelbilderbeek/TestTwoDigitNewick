@@ -38,7 +38,6 @@ ribi::TwoDigitNewicks::TwoDigitNewicks(const int n_reserved, const double theta)
   //Create derivatives of simplest and reserved TwoDigitNewicks
 
   //Create the Newick at index 0
-  //this->SetNewick(0,TwoDigitNewick(std::vector<TwoDigitNewickDerivative>(TwoDigitNewickDerivative(),0,0));
 
   //Let i start at 1, because '(0)' is no valid Newick
   for (int i=1; i!=n_reserved; ++i)
@@ -51,9 +50,9 @@ ribi::TwoDigitNewicks::TwoDigitNewicks(const int n_reserved, const double theta)
       v.push_back(TwoDigitNewickDerivative(i-1,value_changed,other_value_changed));
     }
     //saz = sum above zero
-    const int saz = i;
+    const int saz{i};
     //sao = sum above one
-    const int sao = (i > 1 ? i : 0);
+    const int sao{i > 1 ? i : 0};
 
     TwoDigitNewick n(v,saz,sao);
 
