@@ -260,7 +260,7 @@ void ribi::QtTestTwoDigitNewickMainDialog::OnAboutClick()
 
   about.AddLibrary("BigInt: version 2010.04.30");
   about.AddLibrary("BinaryNewickVector: version " + BinaryNewickVector::GetVersion());
-  about.AddLibrary("TwoDigitNewick: version " + TwoDigitNewick().GetVersion());
+  about.AddLibrary("TwoDigitNewick: version " + GetTwoDigitNewickVersion());
 
   QtAboutDialog d(about);
   this->ShowChild(&d);

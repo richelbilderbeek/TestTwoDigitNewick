@@ -7,8 +7,6 @@
 #include "testtwodigitnewickmenudialog.h"
 #include "qtaboutdialog.h"
 #include "qttesttwodigitnewickmaindialog.h"
-#include "testtimer.h"
-#include "trace.h"
 #include "ui_qttesttwodigitnewickmenudialog.h"
 #pragma GCC diagnostic pop
 
@@ -16,9 +14,6 @@ ribi::QtTestTwoDigitNewickMenuDialog::QtTestTwoDigitNewickMenuDialog(QWidget *pa
   QtHideAndShowDialog(parent),
   ui(new Ui::QtTestTwoDigitNewickMenuDialog)
 {
-  #ifndef NDEBUG
-  Test();
-  #endif
   ui->setupUi(this);
 }
 
@@ -43,16 +38,3 @@ void ribi::QtTestTwoDigitNewickMenuDialog::on_button_quit_clicked()
 {
   this->close();
 }
-
-#ifndef NDEBUG
-void ribi::QtTestTwoDigitNewickMenuDialog::Test() noexcept
-{
-  {
-    static bool is_tested{false};
-    if (is_tested) return;
-    is_tested = true;
-  }
-  QtTestTwoDigitNewickMainDialog();
-  const TestTimer test_timer(__func__,__FILE__,1.0);
-}
-#endif

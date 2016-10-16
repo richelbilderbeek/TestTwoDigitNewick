@@ -55,7 +55,7 @@ int ribi::TestTwoDigitNewickMenuDialog::ExecuteSpecific(const std::vector<std::s
 
   }
   const double theta = boost::lexical_cast<double>(argv[2]);
-  const double p = ribi::TwoDigitNewick::CalculateProbability(newick,theta);
+  const double p = ribi::CalculateProbabilityTwoDigitNewick(newick,theta);
   std::cout << std::setprecision(99) << p << '\n';
   return 0;
 }

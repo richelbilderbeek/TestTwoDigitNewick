@@ -67,9 +67,6 @@ struct TwoDigitNewick
   void SetProbability(const double p);
   static void SetTheta(const double theta);
 
-  static std::string GetVersion() noexcept;
-  static std::vector<std::string> GetVersionHistory() noexcept;
-
   private:
   ///m_derivatives contains all the information
   ///needed to get to this Newick's derivatives
@@ -91,14 +88,18 @@ struct TwoDigitNewick
 
   double CalculateDenominator(
     const int sum_above_zero,
-    const int sum_above_one) const;
-
-  public:
-
-  static double CalculateProbability(
-    const std::string& newick,
-    const double theta);
+    const int sum_above_one
+  ) const;
 };
+
+///Calculate a probability using TwoDigitNewick as a workhorse
+double CalculateProbabilityTwoDigitNewick(
+  const std::string& newick,
+  const double theta
+);
+
+std::string GetTwoDigitNewickVersion() noexcept;
+std::vector<std::string> GetTwoDigitNewickVersionHistory() noexcept;
 
 } //~namespace ribi
 

@@ -82,7 +82,7 @@ double ribi::TwoDigitNewick::CalculateDenominator(
   return d;
 }
 
-double ribi::TwoDigitNewick::CalculateProbability(
+double ribi::CalculateProbabilityTwoDigitNewick(
   const std::string& newick_str,
   const double theta)
 {
@@ -129,17 +129,18 @@ int ribi::TwoDigitNewick::GetSumTermsAboveZero() const
   return m_sum_terms_above_zero;
 }
 
-std::string ribi::TwoDigitNewick::GetVersion() noexcept
+std::string ribi::GetTwoDigitNewickVersion() noexcept
 {
-  return "1.1";
+  return "2.0";
 }
 
-std::vector<std::string> ribi::TwoDigitNewick::GetVersionHistory() noexcept
+std::vector<std::string> ribi::GetTwoDigitNewickVersionHistory() noexcept
 {
-  std::vector<std::string> v;
-  v.push_back("2010-08-22: version 1.0: initial version");
-  v.push_back("2011-02-20: version 1.1: added version history");
-  return v;
+  return {
+    "2010-08-22: version 1.0: initial version",
+    "2011-02-20: version 1.1: added version history",
+    "2016-10-16: version 2.0: OCLint"
+  };
 }
 
 bool ribi::TwoDigitNewick::IsComplete() const
