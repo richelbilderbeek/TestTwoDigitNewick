@@ -58,11 +58,11 @@ ribi::TwoDigitNewicks::TwoDigitNewicks(const int n_reserved, const double theta)
 
     assert(i!=0 && "'(0)' is no valid Newick");
 
-    n.SetProbability(Newick().CalcProbabilitySimpleNewick(
+    n.SetProbability(newick::CalcProbabilitySimpleNewick(
       newick::CreateVector(
-        static_cast<int>(Newick::bracket_open),
+        static_cast<int>(newick::bracket_open),
         i,
-        static_cast<int>(Newick::bracket_close)),
+        static_cast<int>(newick::bracket_close)),
       theta)
     );
     this->SetNewick(i,n);

@@ -77,8 +77,8 @@ double ribi::CalculateProbabilityTwoDigitNewick(
   const std::string& newick_str,
   const double theta)
 {
-  assert(Newick().IsUnaryNewick(Newick().StringToNewick(newick_str))
-      || Newick().IsBinaryNewick(Newick().StringToNewick(newick_str)));
+  assert(newick::IsUnaryNewick(newick::StringToNewick(newick_str))
+      || newick::IsBinaryNewick(newick::StringToNewick(newick_str)));
   ribi::TwoDigitNewick::SetTheta(theta);
   const BinaryNewickVector n(newick_str);
   const TwoDigitNewickIndexer i(n,theta);
