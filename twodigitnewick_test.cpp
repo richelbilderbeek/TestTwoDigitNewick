@@ -38,12 +38,12 @@ BOOST_AUTO_TEST_CASE(ribi_TwoDigitNewick_all)
   const std::vector<std::string> v = ribi::newick::CreateValidNewicks();
   for(const std::string& s: v)
   {
-    if ( Newick().CalcComplexity(Newick().StringToNewick(s))
+    if ( newick::CalcComplexity(newick::StringToNewick(s))
       >  BigInteger(1000000) )
     {
       continue;
     }
-    if (Newick().IsBinaryNewick(Newick().StringToNewick(s)))
+    if (newick::IsBinaryNewick(newick::StringToNewick(s)))
     {
       BinaryNewickVector n(s);
       TwoDigitNewickIndexer(n,10.0);
