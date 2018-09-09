@@ -37,7 +37,7 @@ int ribi::TestTwoDigitNewickMenuDialog::ExecuteSpecific(
     return 1;
   }
   const std::string newick = argv[1];
-  if (!ribi::Newick().IsNewick(newick))
+  if (!ribi::newick::IsNewick(newick))
   {
     std::cout
       << "Invalid Newick format. Use for example:\n"
@@ -68,12 +68,13 @@ ribi::About ribi::TestTwoDigitNewickMenuDialog::GetAbout() const noexcept
     "Richel Bilderbeek",
     "TestTwoDigitNewick",
     "tool to test the two-digit-Newick architecture",
-    "the 8th of March 2011",
-    "2010-2015",
-    "http://www.richelbilderbeek.nl/ToolTestTwoDigitNewick",
+    "the 9th of September 2018",
+    "2010-2018",
+    "http://www.richelbilderbeek.nl/ToolTwoDigitNewick",
     GetVersion(),
-    GetVersionHistory());
-};
+    GetVersionHistory()
+  );
+}
 
 
 ribi::Help ribi::TestTwoDigitNewickMenuDialog::GetHelp() const noexcept

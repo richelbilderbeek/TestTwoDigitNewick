@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/images">
-        <file>R.png</file>
+        <file>pics/R.png</file>
     </qresource>
     <qresource prefix="/css">
         <file>wt.css</file>
