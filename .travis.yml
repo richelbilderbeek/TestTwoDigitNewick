@@ -47,7 +47,7 @@ script:
   - make --silent debug
   - ./get_code_cov.sh
   - codecov
-  - ./do_oclint.sh
+  - ./do_oclint.sh || true
 
 after_success: 
   - bash <(curl -s https://codecov.io/bash)
