@@ -37,11 +37,14 @@ install:
   - ./install_other_githubs.sh
 
 script: 
-  - ./build_test.sh
+  - qmake -qt=qt5 TwoDigitNewickTest.pro
+  - make --silent debug
   - ./TwoDigitNewickTest
-  - ./build_console.sh
-  - ./build_desktop.sh
+  - qmake -qt=qt5 TestTwoDigitNewickConsole.pro
+  - make --silent debug
   - ./TestTwoDigitNewickConsole "(2,(2,2))" 10.0
+  - qmake -qt=qt5 TestTwoDigitNewickDesktop.pro
+  - make --silent debug
   - ./get_code_cov.sh
   - codecov
   - ./do_oclint.sh
