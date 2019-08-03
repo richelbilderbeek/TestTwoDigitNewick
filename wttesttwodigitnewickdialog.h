@@ -24,7 +24,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #include <vector>
 
-#pragma GCC diagnostic push
+
 
 
 
@@ -35,7 +35,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include <Wt/WTextArea>
 
 #include "about.h"
-#pragma GCC diagnostic pop
+
 
 namespace ribi {
 

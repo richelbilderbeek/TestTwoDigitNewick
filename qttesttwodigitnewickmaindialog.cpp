@@ -1,4 +1,4 @@
-#pragma GCC diagnostic push
+
 
 
 #include "qttesttwodigitnewickmaindialog.h"
@@ -25,7 +25,7 @@
 #include "twodigitnewick.h"
 #include "twodigitnewickindexer.h"
 #include "ui_qttesttwodigitnewickmaindialog.h"
-#pragma GCC diagnostic pop
+
 
 ribi::QtTestTwoDigitNewickMainDialog::QtTestTwoDigitNewickMainDialog(QWidget *parent)
   : QtHideAndShowDialog(parent),

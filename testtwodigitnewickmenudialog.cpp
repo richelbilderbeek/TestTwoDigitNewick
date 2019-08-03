@@ -3,7 +3,7 @@
 #include <cassert>
 #include <iomanip>
 
-#pragma GCC diagnostic push
+
 
 
 #include <boost/lexical_cast.hpp>
@@ -11,7 +11,7 @@
 #include "twodigitnewick.h"
 #include "testtimer.h"
 #include "newick.h"
-#pragma GCC diagnostic pop
+
 
 int ribi::TestTwoDigitNewickMenuDialog::ExecuteSpecific(
   const std::vector<std::string>& argv

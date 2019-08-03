@@ -1,10 +1,10 @@
 #ifndef QTTESTTWODIGITNEWICKDIALOG_H
 #define QTTESTTWODIGITNEWICKDIALOG_H
 
-#pragma GCC diagnostic push
+
 
 #include "qthideandshowdialog.h"
-#pragma GCC diagnostic pop
+
 
 namespace Ui {
   class QtTestTwoDigitNewickMainDialog;
