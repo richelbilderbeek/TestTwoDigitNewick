@@ -5,7 +5,7 @@
 
 #pragma GCC diagnostic push
 
-#pragma GCC diagnostic ignored "-Wunused-local-typedefs"
+
 #include <boost/lexical_cast.hpp>
 
 #include "twodigitnewick.h"
