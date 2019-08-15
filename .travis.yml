@@ -36,8 +36,8 @@ script:
   - ./TestTwoDigitNewickConsole "(2,(2,2))" 10.0
   - qmake -qt=qt5 TestTwoDigitNewickDesktop.pro
   - make --silent debug
-  - ./get_code_cov.sh
-  - codecov
+  - ./get_code_cov.sh >/dev/null
+  - codecov >/dev/null
   - ./do_oclint.sh || true
 
 after_success: 
